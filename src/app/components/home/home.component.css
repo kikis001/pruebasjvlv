@@ -1,0 +1,64 @@
+/* .example-card {
+  max-width: 400px;
+} */
+
+
+/* .example-card {
+  width: 200px;
+  height: 150px;
+  padding: 8px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.example-card mat-card-header {
+  padding: 0;
+}
+
+.example-card mat-card-title {
+  margin: 0;
+}
+
+.example-card mat-card-actions {
+  padding: 4px;
+}
+
+
+@media (max-width: 768px) {
+  .example-card {
+    width: 100%;
+  }
+} */
+
+.example-card-container {
+  display: flex; /* Establecemos el contenedor como flexbox */
+  flex-wrap: wrap; /* Permitimos que las tarjetas se envuelvan en filas */
+  justify-content: space-between; /* Distribuimos uniformemente las tarjetas */
+}
+
+.example-card {
+  width: 200px;
+  height: 150px;
+  padding: 8px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.example-card mat-card-header {
+  padding: 0;
+}
+
+.example-card mat-card-title {
+  margin: 0;
+}
+
+.example-card mat-card-actions {
+  padding: 4px;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .example-card-container {
+    flex-direction: column; /* Cambiamos la dirección a columnas en dispositivos móviles */
+  }
+}

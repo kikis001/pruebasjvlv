@@ -1,0 +1,23 @@
+<h2>Ganadores</h2>
+<mat-list>
+  @for(winner of winners; track $index) {
+    <div mat-subheader>{{winner.idRoom.nameRoom}}</div>
+    @for(team of winner.WinnerTeamName; track winners){
+      <mat-list-item>
+        <mat-icon matListItemIcon>emoji_events</mat-icon>
+        <div matListItemTitle>
+          @if(winner.WinnerTeamName.length >= 2) {
+            Ganadores: {{team.nameTeam}}
+          }@else{
+            Ganador: {{team.nameTeam}}
+          }
+        </div>
+        <div matListItemLine>Puntos obtenidos: {{team.score}}</div>
+      </mat-list-item>
+    }@empty() {
+      <p>Sin ganadores</p>
+    }
+    <mat-divider></mat-divider>
+  }@empty() {
+  }
+</mat-list>

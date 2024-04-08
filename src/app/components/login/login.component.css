@@ -1,0 +1,55 @@
+/* :host {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 100%;
+} */
+
+div {
+  display: flex; /* Allow card to fill available space */
+  justify-content: center; /* Center card horizontally */
+  align-items: center; /* Center card vertically on mobile */
+  width: 100%; /* Ensure form fills viewport width */
+  padding: 1rem; /* Add some padding for aesthetics */
+}
+
+/* Style the `mat-card` for responsiveness */
+mat-card {
+  max-width: 350px; /* Set a maximum width for larger screens */
+  width: 100%; /* Ensure card adapts to smaller screens */
+  margin: 0 auto; /* Center card horizontally on all screens */
+}
+
+/* Style form elements for mobile layout */
+mat-form-field {
+  width: 100%; /* Make form fields full width on mobile */
+  margin-bottom: 1rem; /* Add some margin between fields */
+}
+
+/* Responsive font sizes for better readability */
+mat-card-title, mat-label {
+  font-size: 1.2rem; /* Adjust font size as needed */
+}
+
+/* Optional: Media query for additional adjustments
+   on smaller screens (adjust breakpoint as needed) */
+@media only screen and (max-width: 480px) {
+  mat-card-title {
+    font-size: 1rem; /* Reduce title size further on very small screens */
+  }
+}

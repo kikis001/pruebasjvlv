@@ -1,0 +1,26 @@
+@if(quiz){
+  <mat-card  class="questionnaire-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header>
+      <mat-card-title>Cuestionario</mat-card-title>
+    </mat-card-header>
+    @for(question of quiz.questions; track $index){
+    <mat-card-content class="question-card" fxLayout="column" fxLayoutGap="10px">
+      <p> {{$index+1}}-{{ question }}</p>
+    </mat-card-content>
+    <mat-radio-group fxLayout="column" fxLayoutGap="5px" [(ngModel)]="selectedOptions[$index]">
+    @for(option of quiz.options[$index]; track quiz.options; let idx = $index){
+      <mat-radio-button mat-raised-button [value]="idx">{{ option }}</mat-radio-button>
+    }@empty(){
+      <p>Cargando</p>
+    }
+  </mat-radio-group>
+    }@empty(){
+    <p>No hay preguntas</p>
+    }
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="sumbit()">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+  }@else {
+  <p>Cargando</p>
+  }
