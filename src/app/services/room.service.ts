@@ -18,15 +18,15 @@ export class RoomService {
     return this.http.get<Room[]>(`${this.urlRoom}`);
   }
 
-  addTeamRoom(roomId: string, teamId: string) {
+  addTeamRoom(roomId: string, teamId: string | null) {
     return this.http.put(`${this.urlRoom}/${roomId}/addTeam/${teamId}`, {});
   }
 
-  submitAnswers(roomId: string | null, teamId: string, answers: number[]): Observable<number[]> {
+  submitAnswers(roomId: string | null, teamId: string | null, answers: number[]): Observable<number[]> {
     return this.http.post<number[]>(`${this.urlRoom}/${roomId}/teams/${teamId}/submit-answers`, answers);
   }
 
-  validateTeamExist(roomId: string | null, teamId: string) {
+  validateTeamExist(roomId: string | null, teamId: string | null) {
     return this.http.get(`${this.urlRoom}/${roomId}/existUserRoom/${teamId}`)
   }
 }

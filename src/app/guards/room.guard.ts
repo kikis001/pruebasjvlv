@@ -1,14 +1,12 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { RoomService } from '../services/room.service';
 
 export const roomGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
-  const cookieService = inject(CookieService)
   const roomService = inject(RoomService)
   const roomId = route.params['id']
-  const idTeam = cookieService.get('id')
+  const idTeam = localStorage.getItem('id')
   // console.log(roomId)
   return roomService.validateTeamExist(roomId, idTeam).toPromise().then(canAccess => {
     if(canAccess) {

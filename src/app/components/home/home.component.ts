@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../../services/room.service';
 import { Room } from '../../interface/Room';
-import { CookieService } from 'ngx-cookie-service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -9,9 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
-import { User } from '../../interface/User';
-import { Socket, io } from 'socket.io-client';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +26,6 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   constructor(
     private roomService: RoomService,
-    private cookieServer: CookieService,
     private router: Router,
   ) {}
 
@@ -43,7 +38,8 @@ export class HomeComponent implements OnInit {
   }
 
   addTeam(idRoom: string) {
-    const id = this.cookieServer.get('id');
+    // const id = this.cookieServer.get('id');
+    const id = localStorage.getItem('id')
     this.roomService.addTeamRoom(idRoom, id).subscribe(
       (res) => {
         this.router.navigate(['questionnaire', idRoom]);

@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +21,7 @@ export class RegisterComponent {
 
   registerForm: FormGroup;
 
-  constructor(private router: Router, private authService: AuthService, private cookieService: CookieService) {
+  constructor(private router: Router, private authService: AuthService) {
     this.registerForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -38,8 +37,6 @@ export class RegisterComponent {
       return;
     }
     this.authService.registerUser(form.value).subscribe((res) => {
-      // this.cookieService.set('token', res.access_token)
-      // this.cookieService.set('id', res.user._id)
       alert('Credo con éxito. !Ahora ingresa!')
       this.router.navigate(['login'])
     },

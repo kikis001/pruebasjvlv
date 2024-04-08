@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -33,7 +32,6 @@ export class QuestionnaireComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private roomServices: RoomService,
-    private cookieService: CookieService,
     private router: Router,
   ) {}
 
@@ -56,8 +54,7 @@ export class QuestionnaireComponent implements OnInit {
       alert('Regresa! No terminaste el formulario');
       return;
     }
-    const idTeam = this.cookieService.get('id');
-    // console.log(`room: ${this.roomId}, team: ${idTeam}`);
+    const idTeam = localStorage.getItem('id')
     this.roomServices
       .submitAnswers(this.roomId, idTeam, this.selectedOptions)
       .subscribe(
