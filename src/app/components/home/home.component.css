@@ -42,6 +42,7 @@
   padding: 8px;
   margin: 5px;
   font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .example-card mat-card-header {
@@ -59,6 +60,7 @@
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
   .example-card-container {
+    align-items: center;
     flex-direction: column; /* Cambiamos la dirección a columnas en dispositivos móviles */
   }
 }
